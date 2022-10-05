@@ -1,3 +1,13 @@
+# Download NodeJs version laster
+
+# Angular cli version 14.2.0
+
+# Typescript version 4.7.4
+
+# Rxjs library version 7.5.7
+
+# Material library version ~14.2.3
+
 # MyAdminProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
