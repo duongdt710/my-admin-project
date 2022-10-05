@@ -1,6 +1,6 @@
-# Download NodeJs version laster project
+# Download NodeJs version laster
 
-# Angular cli version 14.2.0
+# Angular cli version 14.2.4
 
 # Typescript version 4.7.4
 
