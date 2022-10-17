@@ -6,6 +6,9 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {RouterOutlet} from "@angular/router";
+import {MatCardModule} from "@angular/material/card";
+import {MatDividerModule} from "@angular/material/divider";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import {RouterOutlet} from "@angular/router";
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    RouterOutlet
+    RouterOutlet,
+    MatCardModule,
+    MatDividerModule,
+    ReactiveFormsModule
   ],
   exports: [
     LoginComponent

@@ -1,31 +1,38 @@
+<!--<div class="container">  style="background-image: url('assets/images/bg-img.jpg'); background-repeat: no-repeat; background-size: 100% 100%">-->
 <div class="container">
-  <div class="title">
-    <span>Angular - Software developer Thanh Duong</span>
-    <span><i>Đăng nhập tài khoản</i></span>
-  </div>
+  <mat-card-content class="container logo-title">
+    <img src="/assets/images/logo.png" alt="logo.vn">
+    <h3>Management Information System</h3>
+    <h4>Do Thanh Duong</h4>
+  </mat-card-content>
+  <mat-card class="authentication">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+      <mat-card-subtitle>Use credentials provided by the faculty</mat-card-subtitle>
+    </mat-card-header>
 
-  <div class="form">
-    <mat-form-field appearance="fill">
-      <mat-label>User/ email</mat-label>
-      <input matInput type="text" autocomplete="false">
-<!--      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"></button>-->
-    </mat-form-field>
+    <mat-divider></mat-divider>
+    <br>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" autocomplete="false">
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
-  </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-card-content class="d-flex flex-column">
+        <mat-form-field appearance="outline" class="input-field">
+          <mat-label>Username</mat-label>
+          <input type="text" matInput formControlName="username" placeholder="Ex: dothanhduong@gmail.com" autocomplete="false">
+          <mat-error *ngIf="username.touched && username.errors?.required">Username is required</mat-error>
+          <mat-error *ngIf="username.touched && username.errors?.pattern">Invalid Username</mat-error>
+        </mat-form-field>
 
-  <div class="spinner-border" role="status">
+        <mat-form-field appearance="outline" class="input-field">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password" placeholder="Enter your password">
+          <mat-error *ngIf="password.touched && password.invalid">Please enter your password</mat-error>
+        </mat-form-field>
 
-  </div>
-  <span class="sr-only">Loading...</span>
+      </mat-card-content>
 
+    </form>
+
+  </mat-card>
 
 </div>
-
-

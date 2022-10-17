@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div id="app-loading"></div>
-    <app-login></app-login>
     <router-outlet></router-outlet>
   `,
   styleUrls: ['./app.component.scss']
