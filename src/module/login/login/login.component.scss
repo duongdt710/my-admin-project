@@ -1,6 +1,6 @@
-//.container {
-// background-image: url();
-//}
+.container-fluid {
+  height: 100%;
+}
 
 .logo-title {
   text-align: center;
@@ -12,6 +12,13 @@
 
   h3, h4 {
     font-family: cursive;
+  }
+
+  div {
+    font-size: 25pt;
+    color: white;
+    font-weight: bold;
+    font-family: 'Roboto';
   }
 
   h3 {
@@ -27,6 +34,26 @@
 
   .mat-card-header {
     font-family: cursive;
+  }
+}
+
+.footer {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  button {
+    width: 25%;
+    &:hover {
+      box-shadow: 4px 4px 4px #9e9e9e;
+    }
+  }
+
+  .btn-link {
+    text-decoration: underline;
+    color: #39d0ff;
+    font-size: 12px;
   }
 }
 
