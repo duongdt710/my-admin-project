@@ -16,14 +16,14 @@
       <mat-card-content class="d-flex flex-column">
         <mat-form-field appearance="outline" class="input-field">
           <mat-label>Username</mat-label>
-          <input type="text" matInput formControlName="username" placeholder="Ex: 012345A" [autocomplete]="true">
+          <input #autoFocus type="text" matInput formControlName="username" placeholder="Ex: 012345A">
           <mat-error *ngIf="username.touched && username.errors?.required">Username is required</mat-error>
           <mat-error *ngIf="username.touched && username.errors?.pattern">Invalid Username</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="input-field">
           <mat-label>Password</mat-label>
-          <input type="password" matInput formControlName="password" placeholder="Enter your password">
+          <input type="password" matInput formControlName="password" placeholder="Enter your password" autocomplete="true">
           <mat-error *ngIf="password.touched && password.invalid">Please enter your password</mat-error>
         </mat-form-field>
 

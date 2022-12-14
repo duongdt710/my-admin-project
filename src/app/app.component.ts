@@ -6,25 +6,34 @@ import {AuthenticationService} from "../module/_services/authentication/authenti
 @Component({
   selector: 'app-root',
   template: `
-    <!-- nav -->
-    <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
-      </div>
-    </nav>
+<!--    &lt;!&ndash; nav &ndash;&gt;-->
+<!--    <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">-->
+<!--      <div class="navbar-nav">-->
+<!--        <a class="nav-item nav-link" routerLink="/">Home</a>-->
+<!--        <a class="nav-item nav-link" (click)="logout()">Logout</a>-->
+<!--      </div>-->
+<!--    </nav>-->
 
-    <!-- main app container -->
-    <div class="jumbotron">
-      <div class="container">
-        <div class="row">
-          <div>
-            <app-alert></app-alert>
-            <router-outlet></router-outlet>
-          </div>
-        </div>
-      </div>
-    </div>
+<!--    &lt;!&ndash; main app container &ndash;&gt;-->
+<!--    <div class="jumbotron">-->
+<!--      <div class="container">-->
+<!--        <div class="row">-->
+<!--          <div>-->
+<!--            <app-alert></app-alert>-->
+<!--            <router-outlet></router-outlet>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+  <ul class="nav nav-pills card-header-pills">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="detail">Detail</a>
+    </li>
+  </ul>
+    <router-outlet></router-outlet>
   `,
   styleUrls: ['./app.component.scss']
 })
@@ -41,6 +50,6 @@ export class AppComponent {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['./login']);
+    void this.router.navigate(['./login']);
   }
 }

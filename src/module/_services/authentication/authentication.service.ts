@@ -22,11 +22,12 @@ export class AuthenticationService {
   }
 
   login(value_login: any) {
-    return this.http.post<any>(`api/users/authenticate`, value_login).pipe(map(user => {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.currentUserSubject.next(user);
-      return user;
-    }))
+    return this.http.post<any>(`api/login`, value_login);
+    // return this.http.post<any>(`api/login`, value_login).pipe(map(user => {
+    //   localStorage.setItem('currentUser', JSON.stringify(user));
+    //   this.currentUserSubject.next(user);
+    //   return user;
+    // }))
   }
 
   logout() {

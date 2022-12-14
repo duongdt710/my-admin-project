@@ -1,21 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../_services/authentication/authentication.service";
 import {ActivatedRoute, Router, Routes} from "@angular/router";
 import {AlertService} from "../../_services/alert/alert.service";
-import {first} from "rxjs";
+import {BehaviorSubject, first} from "rxjs";
+import {User} from "../../_services";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
   loginForm: any = FormGroup;
   loading: boolean = false;
   submitted: boolean = false;
   returnUrl: string = '';
-
+  @ViewChild('autoFocus') autoFocus: ElementRef<any> | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,11 +32,19 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.pattern(/^[0-9]{6}[A-Za-z]$/)]],
+      // Validators.pattern(/^[0-9]{6}[A-Za-z]$/)]
+      username: ['', Validators.required],
       password: ['', Validators.required]
     });
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      //@ts-ignore
+        this.autoFocus.nativeElement.focus();
+    }, 0)
   }
 
   get f() {
@@ -45,18 +54,23 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.alertService.clear();
-
-    if (this.loginForm.invalid) {
-      if (this.loginForm.value.username != '012345A' || this.loginForm.value.password != '123456') {
+    this.loading = true;
+    // if (this.loginForm.invalid) {
+    if (this.loginForm.value) {
+      if (this.loginForm.value.username != 'dothanhduonglbt.0710@gmail.com' || this.loginForm.value.password != '123456') {
         this.alertService.error('input wrong, please try again!')
       } else {
-        void this.router.navigate(['/home'])
+        void this.router.navigate(['/home']);
       }
-      return
     };
-    this.loading = true;
+
+    setTimeout(() => {
+      this.loading = false
+      ;
+    }, 2000)
+
     // @ts-ignore
-    // this.authenticationService.login(this.loginForm.value).pipe(first()).subscribe(response => {
+    // this.authenticationService.login(this.loginForm.value).subscribe(response => {
     //   console.log(response)
     //   if (response.verified) {
     //     // void this.router.navigate(['/'])

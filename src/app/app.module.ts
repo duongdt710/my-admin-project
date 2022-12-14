@@ -6,29 +6,36 @@ import {LoginModule} from "../module/login/login.module";
 import {AppComponent} from "./app.component";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {appRoutingModule} from "./app.routing";
-import {HomeComponent} from "../module/home/home.component";
-import {RegisterComponent} from "../module/register/register.component";
 import {AlertComponent} from "../module/alert/components/alert.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {JwtInterceptor} from "./helpers/jwt.interceptor";
 import {ErrorInterceptor} from "./helpers/error.interceptor";
 import {AlertModule} from "../module/alert/alert.module";
+import {AngularNotificationModule} from "angular-notification-alert";
+import {MatListModule} from "@angular/material/list";
+import {MatIconModule} from "@angular/material/icon";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {ArticleModule} from "../module/article/article.routing";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    RegisterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     appRoutingModule,
     ReactiveFormsModule,
-    AppRoutingModule,
+    ArticleModule,
+    AppRoutingModule, // appRoutingModule được tạo tự động bằng CLI
     HttpClientModule,
     AlertModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularNotificationModule,
+    MatListModule,
+    MatIconModule,
+    MatSidenavModule
   ],
+  exports: [],
   providers: [
     AppComponent,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
