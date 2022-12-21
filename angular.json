@@ -27,7 +27,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/js/tiff.min.js"
+              "src/app/content/js/tiff.min.js"
             ]
           },
           "configurations": {

@@ -30,7 +30,7 @@ import {AuthenticationService} from "../module/_services/authentication/authenti
       <a class="nav-link" routerLink="/">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="detail">Detail</a>
+      <a class="nav-link" routerLink="/article">Detail</a>
     </li>
   </ul>
     <router-outlet></router-outlet>
@@ -38,18 +38,17 @@ import {AuthenticationService} from "../module/_services/authentication/authenti
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my-admin-project';
-  currentUser: User | unknown;
-
-  constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService
-  ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-  }
-
-  logout() {
-    this.authenticationService.logout();
-    void this.router.navigate(['./login']);
-  }
+  // currentUser: User | unknown;
+  //
+  // constructor(
+  //   private router: Router,
+  //   private authenticationService: AuthenticationService
+  // ) {
+  //   this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  // }
+  //
+  // logout() {
+  //   this.authenticationService.logout();
+  //   void this.router.navigate(['./login']);
+  // }
 }
