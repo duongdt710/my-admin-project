@@ -1,7 +1,8 @@
 export class Article {
-  id: string | unknown;
-  slug: string | unknown;
-  title: string | unknown;
-  content: string | unknown;
-  updateAt: string | unknown;
+  id?: string;
+  slug?: string;
+  title?: string;
+  content?: string;
+  updateAt?: string;
+  author?: string
 }

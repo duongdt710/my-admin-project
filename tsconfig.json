@@ -28,6 +28,7 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "strictPropertyInitialization": false // to get rid of the compilation error, otherwise you need to initialize all your variables which is a little bit annoying
   }
 }
