@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import {Observable} from "rxjs";
 import {Article} from "../../model/article";
 import {ArticleService} from "../article.service";
@@ -10,6 +10,7 @@ import {ArticleService} from "../article.service";
 })
 export class ArticleListComponent implements OnInit {
   articles$: Observable<Article[]>;
+  myValue = "Hello Angular"
   constructor(private _api: ArticleService) { }
 
   ngOnInit(): void {
