@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  SOCKET_URL: 'http://localhost:3000/tin-tuc'
+  SOCKET_ENDPOINT: 'http://localhost:3000'
 };
+

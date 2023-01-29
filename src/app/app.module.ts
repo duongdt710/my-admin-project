@@ -15,15 +15,50 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {ArticleModule} from "./article/article.module";
 import {LoginModule} from "./login/login/login.module";
-import {SocketIoConfig, SocketIoModule} from "ngx-socket-io";
-import {environment} from "../environments/environment";
+import {SocketService} from "./socket.service";
+import {NotifierModule} from "angular-notifier";
+import {NotifierOptions} from "angular-notifier";
 
-const config: SocketIoConfig = {
-  url: environment.SOCKET_URL,
-  options: {
-    transports: ['websocket']
+const customNotifierOptions: NotifierOptions = {
+  position: {
+    horizontal: {
+      position: 'left',
+      distance: 12
+    },
+    vertical: {
+      position: 'bottom',
+      distance: 12,
+      gap: 10
+    }
+  },
+  theme: 'material',
+  behaviour: {
+    autoHide: 5000,
+    onClick: 'hide',
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease'
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease'
+    },
+    overlap: 150
   }
-}
+};
 
 @NgModule({
   declarations: [
@@ -39,9 +74,9 @@ const config: SocketIoConfig = {
     MatListModule,
     MatIconModule,
     MatSidenavModule, FormsModule,ArticleModule, LoginModule,
-    SocketIoModule.forRoot(config)
+    NotifierModule.withConfig(customNotifierOptions)
   ],
-  providers: [],
+  providers: [SocketService],
   exports: [],
   bootstrap: [AppComponent]
 })

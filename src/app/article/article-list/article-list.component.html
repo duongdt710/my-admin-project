@@ -14,6 +14,34 @@
     </div>
   </div>
 </div>
+
+<!--real-time chat test client-server using socket-->
+<div class="realtime-socket">
+  <div class="realtime-socket-header">
+    <div class="realtime-socket-avatar">
+      <i class="fa-solid fa-user-tie"></i>
+      <span>Thanh Duong</span>
+    </div>
+    <i class="fa-solid fa-circle-xmark"></i>
+  </div>
+  <div class="realtime-socket-body" >
+    <div  *ngFor="let d of arr_list_message" [ngClass]="onHandleMessage(d)">
+      <i class="fa-solid fa-user-tie"></i>
+      <input #focus_input type="text" id="{{d.id}}" [ngModel]="d.text" (change)="onHandleSend($event)">
+    </div>
+
+<!--    <div class="realtime-socket-body-message-send" id="{{d.id}}">-->
+<!--      <i class="fa-solid fa-user-tie"></i>-->
+<!--      <input type="text" [ngModel]="d.text_send" (change)="onHandleSend($event)">-->
+<!--    </div>-->
+
+<!--    <div *ngIf="d.text_receive" class="realtime-socket-body-message-receiver" id="{{d.id}}">-->
+<!--      <i class="fa-solid fa-user-tie"></i>-->
+<!--      <input type="text" [ngModel]="d.text_receive">-->
+<!--    </div>-->
+  </div>
+</div>
+
 <ng-template #loadingTmpl>
   Loading...
 </ng-template>

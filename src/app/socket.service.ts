@@ -1,32 +1,38 @@
 import { Injectable } from '@angular/core';
-import {Socket} from "ngx-socket-io";
-//@ts-ignore
-import * as Connection from "../../../nodejs-my-admin-project/src/index";
-import {Observable} from "rxjs";
-import * as socketIo from 'socket.io-client'
+import {io} from 'socket.io-client';
 import {environment} from "../environments/environment";
-const backendUrl = 'http://localhost:3000'
+import {Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SocketService {
-  private url = environment.SOCKET_URL;
-  private socket: any;
-
-
-  // private clientSocket: SocketIOClient.Socket;
+  socket: any;
+  private contentList = new Subject<string>();
   constructor() {
-    this.socket = new WebSocket(this.url);
   }
 
-  checkToken() {
-    let observable = new Observable(observer => {
-      this.socket.message = function (event: any) {
-        const data = JSON.parse(event.data.toString());
-        console.log(data);
-      }
-    })
-    return observable;
+  public getMessage(): Observable<string> {
+    return this.contentList.asObservable();
   }
+
+  public updateMessage(message: string): void {
+    this.contentList.next(message);
+  }
+
+  setupSocketConnection(textContent: string) {
+    this.socket = io(environment.SOCKET_ENDPOINT);
+    this.socket.emit('my message', textContent); // send event to server
+    this.socket.on('my broadcast', (message: string) => { // get event from server
+      this.contentList.next(message);
+      this.disconnect();
+    })
+  }
+
+  disconnect() {
+    // if (this.socket) {
+      this.socket.disconnect();
+    // }
+  }
+
 }

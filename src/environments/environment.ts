@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  SOCKET_URL: 'http://localhost:3000/tin-tuc'
+  SOCKET_ENDPOINT: 'http://localhost:3000'
 };
 /*
  * For easier debugging in development mode, you can import the following file

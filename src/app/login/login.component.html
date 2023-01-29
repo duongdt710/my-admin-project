@@ -1,23 +1,29 @@
+<!--<notifier-container></notifier-container>-->
+
 <div class="container">
-  <form class="sign-in-form">
+  <form class="sign-in-form" (submit)="onSubmit(signInForm)" novalidate #signInForm="ngForm">
     <h2>Sign in</h2>
     <div class="row-control">
       <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
-        <input matInput placeholder="Username" />
+        <input matInput placeholder="Username" ngModel name="username" />
       </mat-form-field>
     </div>
     <div class="row-control">
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input type="password" matInput placeholder="Password" />
+        <input type="password" matInput ngModel placeholder="Password" name="pwd" />
       </mat-form-field>
     </div>
     <div class="row-control">
-      <mat-checkbox>Remember me</mat-checkbox>
+      <mat-checkbox ngModel name="remember">Remember me</mat-checkbox>
     </div>
     <div class="row-control row-actions">
       <button mat-raised-button color="primary" type="submit">Sign in</button>
     </div>
   </form>
 </div>
+
+<pre>
+  {{signInForm.value | json}}
+</pre>

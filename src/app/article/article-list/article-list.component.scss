@@ -1,0 +1,44 @@
+.realtime-socket {
+  width: 300px;
+  height: 500px;
+  background: #dddddd;
+  margin-top: 5%;
+  &-header {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    border-bottom: 1px solid black;
+    align-items: center;
+  }
+
+  &-body {
+    width: 100%;
+    position: relative;
+
+    &-message-send, &-message-receiver {
+      display: flex;
+      align-items: center;
+      padding: 5px 5px;
+
+      input {
+        margin-left: 5px;
+        outline: none;
+        border: 1px solid #9e9e9e;
+
+        &:active {
+          border: 1px solid #74c0fc;
+        }
+      }
+    }
+
+    &-message-send {
+      justify-content: flex-end;
+    }
+
+    &-message-receiver {
+      justify-content: flex-start;
+    }
+  }
+}
