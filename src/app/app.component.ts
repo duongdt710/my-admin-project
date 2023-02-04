@@ -17,6 +17,8 @@ import {Subscription} from "rxjs";
       <a class="nav-link" routerLink="/logout">Logout</a>
     </li>
   </ul>
+
+
 <!--  <div style="text-align: center; margin-top: 20px">-->
 <!--    <input type="text" placeholder="Nhập text message" [ngModel]="messageSocket" (change)="onChange($event)">-->
 <!--    <button (click)="onHandleRequest()">Send</button>-->
@@ -28,6 +30,7 @@ import {Subscription} from "rxjs";
 <!--      <li *ngFor="let i of messageList">{{i}}</li>-->
 <!--    </ul>-->
 <!--  </div>-->
+  <app-show-loading></app-show-loading>
   <notifier-container></notifier-container>
     <router-outlet></router-outlet>
   `,

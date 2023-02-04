@@ -18,6 +18,7 @@ import {LoginModule} from "./login/login/login.module";
 import {SocketService} from "./socket.service";
 import {NotifierModule} from "angular-notifier";
 import {NotifierOptions} from "angular-notifier";
+import { ShowLoadingComponent } from './shared/show-loading/show-loading.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -63,6 +64,7 @@ const customNotifierOptions: NotifierOptions = {
 @NgModule({
   declarations: [
     AppComponent,
+    ShowLoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +79,9 @@ const customNotifierOptions: NotifierOptions = {
     NotifierModule.withConfig(customNotifierOptions)
   ],
   providers: [SocketService],
-  exports: [],
+  exports: [
+    ShowLoadingComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

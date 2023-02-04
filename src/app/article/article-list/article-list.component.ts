@@ -3,6 +3,7 @@ import {Observable, Subscription} from "rxjs";
 import {Article} from "../../model/article";
 import {ArticleService} from "../article.service";
 import {SocketService} from "../../socket.service";
+import {ShowLoadingService} from "../../shared/show-loading/show-loading.service";
 
 @Component({
   selector: 'app-article-list',
@@ -18,12 +19,14 @@ export class ArticleListComponent implements OnInit, OnDestroy, AfterViewInit {
   //@ts-ignore
   private subscription: Subscription;
   //@ts-ignore
+  private showLoading: Subscription;
+  //@ts-ignore
   @ViewChild('focus_input') focus_input: ElementRef;
   arr_list_message: any = [
     {id: '1_send', text: ''}
   ]
 
-  constructor(private _api: ArticleService, private socketService: SocketService) { }
+  constructor(private _api: ArticleService, private socketService: SocketService, private showLoadingService: ShowLoadingService) { }
 
   ngOnInit(): void {
     this.articles$ = this._api.getArticles();
@@ -46,6 +49,7 @@ export class ArticleListComponent implements OnInit, OnDestroy, AfterViewInit {
 
       console.log(this.arr_list_message);
     })
+
   }
 
   ngAfterViewInit() {
@@ -56,6 +60,10 @@ export class ArticleListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy() {
     this.socketService.disconnect();
+  }
+
+  onHandleLoading(action_val: string) {
+    this.showLoadingService.setShowLoading(action_val === 'show');
   }
 
   onHandleMessage(item: any) {
